@@ -1,0 +1,20 @@
+{
+    "name": "krlosoul/car-back",
+    "description": "carrito de compras",
+    "require": {
+        "cakephp/chronos": "^2.0",
+        "php-di/php-di": "^6.0",
+        "selective/config": "^1.0.0",
+        "slim/http": "^1.1",
+        "slim/psr7": "^1.0",
+        "slim/slim": "4.*",
+        "lcobucci/jwt": "^3.3",
+        "ramsey/uuid": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Config\\": "public/config",
+            "App\\": "public/src"
+        }
+    }
+}

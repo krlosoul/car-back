@@ -1,0 +1,55 @@
+{
+    "name": "selective/config",
+    "type": "library",
+    "description": "Config component, strictly typed",
+    "keywords": [
+        "config",
+        "configuration",
+        "setting",
+        "settings",
+        "properties",
+        "strict"
+    ],
+    "homepage": "https://github.com/selective-php/config",
+    "license": "MIT",
+    "require": {
+        "php": "^7.2",
+        "cakephp/chronos": "^1.2|^2.0"
+    },
+    "require-dev": {
+        "overtrue/phplint": "^1.1",
+        "phpstan/phpstan": "*",
+        "phpunit/phpunit": "^8",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "scripts": {
+        "test": "phpunit --configuration phpunit.xml",
+        "test-coverage": "phpunit --configuration phpunit.xml --do-not-cache-result --coverage-clover build/logs/clover.xml --coverage-html build/coverage",
+        "check-style": "phpcs --standard=phpcs.xml",
+        "fix-style": "phpcbf --standard=phpcs.xml",
+        "phpstan": "phpstan analyse src tests --level=max -c phpstan.neon --no-progress",
+        "lint": "phplint ./ --exclude=vendor --no-interaction --no-cache",
+        "install-cs": "php -r \"@mkdir('build'); copy('https://cs.symfony.com/download/php-cs-fixer-v2.phar', 'build/php-cs-fixer-v2.phar');\"",
+        "fix-cs": "php build/php-cs-fixer-v2.phar fix --config=.cs.php",
+        "check-cs": "php build/php-cs-fixer-v2.phar fix --dry-run --format=txt --verbose --diff --diff-format=udiff --config=.cs.php",
+        "check-all": [
+            "@lint",
+            "@check-style",
+            "@phpstan",
+            "@test-coverage"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "Selective\\Config\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Selective\\Config\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
